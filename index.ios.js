@@ -59,6 +59,9 @@ export default class EventNow extends Component {
         });
       });
 
+      console.log(items);
+      console.log("hello");
+
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(items)
       });
