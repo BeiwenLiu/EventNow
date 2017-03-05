@@ -99,7 +99,7 @@ export default class EventNow extends Component {
         {
           text: 'Add',
           onPress: (text) => {
-            this.itemsRef.push({ title: text })
+            this.itemsRef.push({ title: text }) //text is the user input.
           }
         },
       ],
