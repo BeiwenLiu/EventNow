@@ -12,32 +12,40 @@ import {
   View
 } from 'react-native';
 
+const styles = require('./styles.js')
+
 var itemsRef = {
 apiKey: 'AIzaSyBlUjywuD6JziUFZY7nRJ6aS-MdGEw1JY0',
 authDomain: 'eventnow-cc4c3.firebaseapp.com',
-databaseURL: 'eventnow-cc4c3',
+databaseURL: 'https://eventnow-cc4c3.firebaseio.com/',
 storageBucket: 'gs://eventnow-cc4c3.appspot.com'
 };
 
 var FireBase = require('firebase');
 const firebaseapp = FireBase.initializeApp(itemsRef)
-firebaseapp.set()
+
 
 export default class EventNow extends Component {
+  constructor(props) {
+    super(props);
+    this.itemsRef = this.getRef().child('items');
+  }
+
+  getRef() {
+    return firebaseapp.database().ref();
+  }
+
   render() {
-    return <View style={styles.container}>
-    <Text>Hi</Text>
-    </View>
+    return (
+      <View style={styles.container}>
+
+        <Text> Hey </Text>
+
+      </View>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
+
 
 AppRegistry.registerComponent('EventNow', () => EventNow);
