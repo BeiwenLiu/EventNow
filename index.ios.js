@@ -76,8 +76,11 @@ export default class EventNow extends Component {
   render() {
     return (
       <View style={styles.container}>
-
-        <StatusBar title="Grocery List" />
+      <View style={styles.container1}>
+      <ActionButton title="Search" />
+      <StatusBar title="Events" />
+      <ActionButton onPress={this._addItem.bind(this)} title="Add" />
+      </View>
 
         <ListView
           dataSource={this.state.dataSource}
@@ -85,7 +88,7 @@ export default class EventNow extends Component {
           enableEmptySections={true}
           style={styles.listview}/>
 
-        <ActionButton onPress={this._addItem.bind(this)} title="Add" />
+        
 
       </View>
     )

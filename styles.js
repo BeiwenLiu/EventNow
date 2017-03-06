@@ -10,10 +10,18 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#252525',
+  },
+  container1: {
+    flexDirection: 'row',
+    alignItems:'center',
+    paddingTop:30,
+    paddingBottom:10,
   },
   listview: {
     flex: 1,
+    width: 360,
+    height: 700,
   },
   li: {
     backgroundColor: '#fff',
@@ -32,39 +40,31 @@ var styles = StyleSheet.create({
     fontSize: 16,
   },
   navbar: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderBottomColor: '#eee',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    justifyContent: 'center',
-    height: 44,
-    flexDirection: 'row'
+    flex:1,
   },
   navbarTitle: {
-    color: '#444',
-    fontSize: 16,
-    fontWeight: "500"
+    color: 'white',
+    fontSize: 20,
+    fontWeight: "500",
+    textAlign:'center',
   },
   statusbar: {
     backgroundColor: '#fff',
-    height: 22,
   },
   center: {
     textAlign: 'center',
   },
   actionText: {
-    color: '#fff',
-    fontSize: 16,
+    color:"#2a5ca6",
+    fontSize: 12,
     textAlign: 'center',
   },
   action: {
-    backgroundColor: constants.actionColor,
-    borderColor: 'transparent',
-    borderWidth: 1,
-    paddingLeft: 16,
-    paddingTop: 14,
-    paddingBottom: 16,
+    width:70,
+    backgroundColor: '#B7B7B7',
+    borderWidth:2,
+    padding:10,
+    margin:5
   },
 })
 
