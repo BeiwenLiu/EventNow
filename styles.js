@@ -15,7 +15,7 @@ var styles = StyleSheet.create({
   container1: {
     flexDirection: 'row',
     alignItems:'center',
-    paddingTop:30,
+    paddingTop:70,
     paddingBottom:10,
   },
   listview: {
@@ -38,6 +38,10 @@ var styles = StyleSheet.create({
   liText: {
     color: '#333',
     fontSize: 16,
+  },
+  tagText: {
+      color: '#999',
+      fontSize: 12,
   },
   navbar: {
     flex:1,
