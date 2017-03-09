@@ -16,7 +16,10 @@ import {
   Text,
   ListView,
   View,
-  AlertIOS
+  AlertIOS,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 var t = require('tcomb-form-native')
@@ -65,6 +68,11 @@ export default class NewEventScene extends Component {
     this._onBack = this._onBack.bind(this);
   }
 
+  state = {
+      behavior: 'padding',
+      modalOpen: false,
+  }
+    
   //This is an instance of a database. Use this to push / delete
   getRef() {
     return this.props.firebaseapp.database().ref();
@@ -72,7 +80,9 @@ export default class NewEventScene extends Component {
     
   render() {
     return (
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
+        <KeyboardAvoidingView behavior={this.state.behavior} style={styles.container}>
       <Form
         ref = "form"
         type = {Event}
@@ -80,8 +90,9 @@ export default class NewEventScene extends Component {
       />
 
         <ActionButton onPress={this._addItem.bind(this)} title="Add" />
-
+        </KeyboardAvoidingView>
       </View>
+        </TouchableWithoutFeedback>
     )
   }
 
