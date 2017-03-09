@@ -39,6 +39,10 @@ var styles = StyleSheet.create({
     color: '#333',
     fontSize: 16,
   },
+  tagText: {
+      color: '#999',
+      fontSize: 12,
+  },
   navbar: {
     flex:1,
   },

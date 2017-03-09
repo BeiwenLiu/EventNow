@@ -19,21 +19,45 @@ import {
   AlertIOS
 } from 'react-native';
 
-const t = require('tcomb-form-native')
-const Form = t.form.Form;
+var t = require('tcomb-form-native')
+var Form = t.form.Form;
 
 var Event = t.struct ({
     title: t.String,    //required string
-    tag: t.maybe(t.String),  //optional string to make discoverable
-})
+    timeStart: t.Date,  //event start
+    timeEnd: t.Date,    //event end
+    
+    tags: t.maybe(t.String),  //optional string to make discoverable
+});
 
-var options = {};
+var options = {
+    fields: {
+        title: {
+            label: 'Event name',
+            placeholder: 'Event name',
+            placeholderTextColor: '#999',
+            error: 'Event must have a name',
+        },
+        timeStart: {
+            label: 'Time Start',
+        },
+        timeEnd: {
+            label: 'Time End',
+        },
+        tags: {
+            label: 'Tags (optional)',
+            placeholder: 'Tags',
+            placeholderTextColor: '#999',
+            help: 'Separate tags with spaces',
+        },
+    },
+};
 
 export default class NewEventScene extends Component {
-  static propTypes = {
-      title: PropTypes.string.isRequired,
-      navigator: PropTypes.object.isRequired,
-  }
+//  static propTypes = {
+//      title: PropTypes.string.isRequired,
+//      navigator: PropTypes.object.isRequired,
+//  }
     
   constructor(props) {
     super(props);
@@ -45,7 +69,7 @@ export default class NewEventScene extends Component {
   getRef() {
     return this.props.firebaseapp.database().ref();
   }
-
+    
   render() {
     return (
       <View style={styles.container}>
@@ -64,22 +88,13 @@ export default class NewEventScene extends Component {
 
 //Example of adding something to database
   _addItem() {
-      //this.itemsRef.push({title: text}) //text is the user input
-      this._onBack();
-    /**AlertIOS.prompt(
-      'Add New Item',
-      null,
-      [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {
-          text: 'Add',
-          onPress: (text) => {
-            this.itemsRef.push({ title: text }) //text is the user input.
-          }
-        },
-      ],
-      'plain-text'
-    );**/
+      var value = this.refs.form.getValue()
+      if (value) {
+          console.log(value);
+          
+          var key = this.itemsRef.push(value).getKey();
+          this._onBack();
+      }
   }
 
 _onBack() {

@@ -33,10 +33,10 @@ const firebaseapp = FireBase.initializeApp(cred)
 
 
 export default class EventsListScene extends Component {
-  static propTypes = {
-      title: PropTypes.string.isRequired,
-      navigator: PropTypes.object.isRequired,
-  }
+//  static propTypes = {
+//      title: PropTypes.string.isRequired,
+//      navigator: PropTypes.object.isRequired,
+//  }
   
   constructor(props) {
     super(props);
@@ -62,6 +62,7 @@ export default class EventsListScene extends Component {
       snap.forEach((child) => {
         items.push({
           title: child.val().title,
+          tags: child.val().tags,
           _key: child.key
         });
       });
@@ -85,7 +86,7 @@ export default class EventsListScene extends Component {
       <View style={styles.container}>
       <View style={styles.container1}>
       <ActionButton title="Search" />
-      <StatusBar title="Events" />
+      <StatusBar title="" />
         
       <ActionButton onPress={this._onForward} title="Add" />
       </View>
@@ -107,7 +108,7 @@ export default class EventsListScene extends Component {
 
     const onPress = () => {
       AlertIOS.alert(
-        'Complete',
+        'Mark Event as Complete?',
         null,
         [
           {text: 'Complete', onPress: (text) => this.itemsRef.child(item._key).remove()},
